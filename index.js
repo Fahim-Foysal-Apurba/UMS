@@ -34,14 +34,14 @@ app.post('/register', async (req, res)=> {
       try{
         
         const {name, email, password}= req.body;
-        const q="Select * form users Where email=$1"
+        const q="SELECT * FROM users WHERE email=$1"
         const r=await pool.query(q, [email])
 
         if(r.rows.length > 0){
             return res.status(400).json({message: "Email already exist"})
         }
         const hashPass= await bcrypt.hash(password, 10)
-        const iq= "Insert into users (name, email, password) Values ($1, $2, $3)  RETURNING *"
+        const iq= "Insert INTO users (name, email, password) Values ($1, $2, $3)  RETURNING *"
         const result= await pool.query(iq, [name, email, hashPass])
 
         req.session.user ={

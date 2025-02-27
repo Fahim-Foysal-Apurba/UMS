@@ -13,4 +13,4 @@ pool.on('error', (err)=>{
     process.exit(-1)
 })
 
-module.export = pool;
+module.exports = pool;
