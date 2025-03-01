@@ -10,7 +10,7 @@ const port = 5000
 
 
 ///middleware
-app.use(cors({ origin: "https://ums-ffa.netlify.app/", credentials: true }))
+app.use(cors({ origin: "https://ums-ffa.netlify.app", credentials: true }))
 app.use(express.json())
 app.use(bodyParser.json())
 
